@@ -8,10 +8,28 @@ public class Bullet : MonoBehaviour
     //private Vector3 spawnLoc;
     private Vector3 dir;
 
+    private float duration = 5f;
+
     public void OnEnable()
     {
+        //speed = 10f;
+        //dir = new Vector3 (1f,1f,1f);
+        //duration = 5f;
+    }
+
+    public void SetRotation(Vector3 direction)
+    {
         speed = 10f;
-        dir = new Vector3 (1f,1f,1f);
+        dir = direction;
+    }
+
+    void Update()
+    {
+        duration -= Time.deltaTime;
+        if(duration < 0f)
+        {
+            Destroy(gameObject, 1f);
+        }
     }
 
     // Update is called once per frame
