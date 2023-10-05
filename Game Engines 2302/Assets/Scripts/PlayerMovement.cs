@@ -5,8 +5,12 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private CharacterController controller;
+    [SerializeField] private CameraController camController;
     [SerializeField] private float baseSpeed;
     [SerializeField] private float sprintSpeed;
+
+
+    private Vector3 cameraFacing;
 
     //private float gravity = -9.81f;
     //public float jumpHeight = 3f;
@@ -22,22 +26,21 @@ public class PlayerMovement : MonoBehaviour
         {
             velocity.y = -2f;
         } */
+        cameraFacing = camController.facingDirection;
 
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
 
-        if (Input.GetKeyDown(KeyCode.LeftShift))
-        {
-            speedBoost = sprintSpeed;
-        } 
-        else
-        {
-            speedBoost = 1f;
-        }
+        CheckSprint();
+
+        
             
-        Vector3 move = transform.right * x + transform.forward * z;
+        Vector3 move = (transform.right) * x + (transform.forward) * z;
 
         controller.Move(move * (baseSpeed * speedBoost) * Time.deltaTime);
+
+        Quaternion targetRotation = Quaternion.LookRotation(cameraFacing);
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 30f * Time.deltaTime);
 
         //velocity.y += gravity * Time.deltaTime;
 
@@ -47,5 +50,19 @@ public class PlayerMovement : MonoBehaviour
     void CheckGrounded()
     {
 
+    }
+
+    private void CheckSprint()
+    {
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            speedBoost = sprintSpeed;
+        } 
+
+        if (Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            speedBoost = 1f;
+        } 
+       
     }
 }
