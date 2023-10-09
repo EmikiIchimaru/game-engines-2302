@@ -16,7 +16,8 @@ public class Bullet : MonoBehaviour
 
     void Start()
     {
-        transform.Rotate(90f,0f,0f);
+        //transform.Rotate(90f,0f,0f);
+        
         
     }
 
