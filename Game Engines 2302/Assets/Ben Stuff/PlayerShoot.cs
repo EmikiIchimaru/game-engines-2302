@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerInput : MonoBehaviour
+public class PlayerShoot : MonoBehaviour
 {
     //private ObjectPooler pool;
     //private new Transform camera;
@@ -28,11 +28,19 @@ public class PlayerInput : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             if (weaponTransform == null) { return; }
-            Debug.Log("Shooting!");
-            GameObject go = Instantiate(bulletPrefab, weaponTransform.position, Quaternion.identity);
+            //Debug.Log("Shooting!");
+            Quaternion spawnRotation = transform.rotation;
+            GameObject go = Instantiate(bulletPrefab, weaponTransform.position, spawnRotation);
             Bullet bullet = go.GetComponent<Bullet>();
             bullet.dir = transform.forward;
             Destroy(go, 2f);
         }
     }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawLine(transform.position, transform.position + transform.forward * 3f);
+    }
+
 }
