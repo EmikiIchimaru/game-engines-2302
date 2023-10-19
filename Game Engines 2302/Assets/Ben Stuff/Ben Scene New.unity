@@ -3500,6 +3500,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 3168024460018384127, guid: 829f6838f69a4524dafc6dd9c50511e6, type: 3}
+  maxBullets: 10
 --- !u!114 &1464755549
 MonoBehaviour:
   m_ObjectHideFlags: 0

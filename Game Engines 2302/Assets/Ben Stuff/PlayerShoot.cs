@@ -8,6 +8,9 @@ public class PlayerShoot : MonoBehaviour
     //private new Transform camera;
 
     [SerializeField] private GameObject bulletPrefab;
+    [SerializeField] private int maxBullets;
+
+    private int currentBullets;
 
     private Transform weaponTransform;
 
@@ -16,6 +19,7 @@ public class PlayerShoot : MonoBehaviour
         //pool = ObjectPooler.Instance;
         //camera = transform.Find("Camera");
         weaponTransform = transform.Find("Rifle");
+        currentBullets = maxBullets;
     }
     void Start()
     {
@@ -28,13 +32,36 @@ public class PlayerShoot : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             if (weaponTransform == null) { return; }
+            if (currentBullets > 0)
+            {
+                currentBullets--;
+                Shoot();
+            }
+            else
+            {
+                //play no bullet fx;
+            }
+            
             //Debug.Log("Shooting!");
-            Quaternion spawnRotation = transform.rotation;
-            GameObject go = Instantiate(bulletPrefab, weaponTransform.position, spawnRotation);
-            Bullet bullet = go.GetComponent<Bullet>();
-            bullet.dir = transform.forward;
-            Destroy(go, 2f);
+            
         }
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            Debug.Log("reload");
+            currentBullets = maxBullets;
+            //Debug.Log("Shooting!");
+            
+        }
+    }
+
+    private void Shoot()
+    {
+        Quaternion spawnRotation = transform.rotation;
+        GameObject go = Instantiate(bulletPrefab, weaponTransform.position, spawnRotation);
+        Bullet bullet = go.GetComponent<Bullet>();
+        bullet.dir = transform.forward;
+        Destroy(go, 2f);
     }
 
     private void OnDrawGizmos()
