@@ -9,6 +9,8 @@ public class PlayerShoot : MonoBehaviour
 
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private int maxBullets;
+    [SerializeField] private int Anime;
+    public ExampleClass script;
 
     private int currentBullets;
 
@@ -29,34 +31,53 @@ public class PlayerShoot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Anime == 0)
         {
-            if (weaponTransform == null) { return; }
-            if (currentBullets > 0)
+            if (Input.GetMouseButtonDown(0))
             {
-                currentBullets--;
-                Shoot();
-            }
-            else
-            {
-                //play no bullet fx;
-            }
-            
-            //Debug.Log("Shooting!");
-            
-        }
+                if (weaponTransform == null) { return; }
+                if (currentBullets > 0)
+                {
+                    currentBullets--;
+                    Shoot();
+                }
+                else
+                {
+                    //play no bullet fx;
+                }
 
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            Debug.Log("reload");
-            currentBullets = maxBullets;
-            //Debug.Log("Shooting!");
-            
+                //Debug.Log("Shooting!");
+
+            }
+
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                Debug.Log("reload");
+                currentBullets = maxBullets;
+                //Debug.Log("Shooting!");
+
+            }
         }
+        if (Anime == 1)
+            {
+            if (script.Flag == true) {
+
+                BotShoot();
+        }
+    }
     }
 
     private void Shoot()
     {
+        Quaternion spawnRotation = transform.rotation;
+        GameObject go = Instantiate(bulletPrefab, weaponTransform.position, spawnRotation);
+        Bullet bullet = go.GetComponent<Bullet>();
+        bullet.dir = transform.forward;
+        Destroy(go, 2f);
+    }
+    private void BotShoot()
+    {
+        this.transform.position = script.m_maxPos;
         Quaternion spawnRotation = transform.rotation;
         GameObject go = Instantiate(bulletPrefab, weaponTransform.position, spawnRotation);
         Bullet bullet = go.GetComponent<Bullet>();
