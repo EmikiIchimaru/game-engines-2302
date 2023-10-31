@@ -30,13 +30,26 @@ public class Bullet : MonoBehaviour
         Vector3 moveAmount = speed * Time.deltaTime * dir;
         //Vector3 moveAmount = new Vector3 (speed * dir.x, speed * dir.y, speed * dir.z);
         transform.position = transform.position + moveAmount;
+
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("hit");
 
         if (other.CompareTag("Player"))
+        {
+            CharacterStats targetChar = other.gameObject.GetComponent<CharacterStats>();
+            if (targetChar == null) { return; }
+            if (targetChar.IFrames == false)
+            {
+
+                targetChar.TakeDamage(attackDamage);
+                Quaternion spawnRotation = transform.rotation * Quaternion.AngleAxis(180f, Vector3.up);
+                GameObject vfx = Instantiate(vfxm.FindFX("Blood"), transform.position, spawnRotation);
+                Destroy(vfx, 2f);
+            }
+        }
+        if (other.CompareTag("Enemy") )
         {
             CharacterStats targetChar = other.gameObject.GetComponent<CharacterStats>();
             if (targetChar == null) { return; }

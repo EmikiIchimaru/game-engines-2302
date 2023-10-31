@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerShoot : MonoBehaviour
 {
@@ -9,10 +10,13 @@ public class PlayerShoot : MonoBehaviour
 
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private int maxBullets;
+    [SerializeField] private AudioSource Shooting;
+    [SerializeField] private AudioSource Reloading;
 
     private int currentBullets;
 
     private Transform weaponTransform;
+    
 
     void Awake()
     {
@@ -23,13 +27,13 @@ public class PlayerShoot : MonoBehaviour
     }
     void Start()
     {
-        
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
+
             if (Input.GetMouseButtonDown(0))
             {
                 if (weaponTransform == null) { return; }
@@ -43,19 +47,25 @@ public class PlayerShoot : MonoBehaviour
                     //play no bullet fx;
                 }
 
-                //Debug.Log("Shooting!");
-
             }
 
             if (Input.GetKeyDown(KeyCode.R))
             {
                 Debug.Log("reload");
                 currentBullets = maxBullets;
-                //Debug.Log("Shooting!");
+                Reloading.Play();
 
             }
-        
+            if (Input.GetKeyDown(KeyCode.M))
+            {
+            Cursor.lockState = CursorLockMode.None;
+            SceneManager.LoadScene(0);
+             }
+
+
+
     }
+   
     
 
     private void Shoot()
@@ -64,7 +74,9 @@ public class PlayerShoot : MonoBehaviour
         GameObject go = Instantiate(bulletPrefab, weaponTransform.position, spawnRotation);
         Bullet bullet = go.GetComponent<Bullet>();
         bullet.dir = transform.forward;
+        Shooting.Play();
         Destroy(go, 2f);
+
     }
 
     private void OnDrawGizmos()

@@ -9,7 +9,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float baseSpeed;
     [SerializeField] private float sprintSpeed;
 
-
     private Vector3 cameraFacing;
 
     //private float gravity = -9.81f;
@@ -65,4 +64,6 @@ public class PlayerMovement : MonoBehaviour
         } 
        
     }
+
+
 }
