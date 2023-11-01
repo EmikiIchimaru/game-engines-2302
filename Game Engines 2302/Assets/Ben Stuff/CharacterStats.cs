@@ -63,6 +63,7 @@ public class CharacterStats : MonoBehaviour
                 Die();
                 Scorepoint.ScorePoint = 10 + Scorepoint.ScorePoint;
                 Scorepoint.EnemyKilled = Scorepoint.EnemyKilled + 1;
+                
             }
         }
         if (this.CompareTag("Boss"))

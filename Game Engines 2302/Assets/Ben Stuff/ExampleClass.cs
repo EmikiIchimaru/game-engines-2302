@@ -69,7 +69,6 @@ public class ExampleClass : MonoBehaviour
                 if (timer >= 0.1 && this.CompareTag("Boss"))
                 {
                     BossShoot();
-                    Debug.Log(Time.deltaTime);
                     timer = 0;
                 }
 

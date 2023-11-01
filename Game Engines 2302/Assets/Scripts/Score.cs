@@ -9,6 +9,7 @@ public class Score : MonoBehaviour
     public float Bullet = 0f;
     public GameObject player;
     public PlayerShoot Ammo;
+    public static float totalscore;
 
     void Start()
     {
@@ -19,5 +20,7 @@ public class Score : MonoBehaviour
     void Update()
     {
         Bullet = Ammo.currentBullets;
+        totalscore = ScorePoint;
+        Debug.Log(totalscore);
     }
 }
