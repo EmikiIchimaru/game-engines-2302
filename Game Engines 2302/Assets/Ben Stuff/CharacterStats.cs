@@ -10,11 +10,13 @@ public class CharacterStats : MonoBehaviour
 
 
     public float maxHealth;
-    private int Score;
-    private float currentHealth;
+    public float Score;
+    public float currentHealth;
     public int EnemyKilled;
     public float cooldowntimer;
     public float timer;
+    private Score Scorepoint;
+    public GameObject player;
 
 
     // Start is called before the first frame update
@@ -23,11 +25,12 @@ public class CharacterStats : MonoBehaviour
         currentHealth = maxHealth;
         Score = 0;
         EnemyKilled = 0;
+        Scorepoint = player.GetComponent<Score>();
     }
 
     // Update is called once per frame
     void Update()
-    {       
+    {
         timer += Time.deltaTime;
         if (Input.GetKeyDown(KeyCode.LeftShift) && cooldowntimer == 0 && IFrames == true)
         {
@@ -58,8 +61,8 @@ public class CharacterStats : MonoBehaviour
             if (currentHealth <= 0f)
             {
                 Die();
-                Score = 10 + Score;
-                EnemyKilled = EnemyKilled + 1;
+                Scorepoint.ScorePoint = 10 + Scorepoint.ScorePoint;
+                Scorepoint.EnemyKilled = Scorepoint.EnemyKilled + 1;
             }
         }
         if (this.CompareTag("Boss"))
@@ -67,8 +70,8 @@ public class CharacterStats : MonoBehaviour
             if (currentHealth <= 0f)
             {
                 Die();
-                Score = 10 + Score;
-                EnemyKilled = EnemyKilled + 1;
+                Scorepoint.ScorePoint = 10 + Scorepoint.ScorePoint;
+                Scorepoint.EnemyKilled = Scorepoint.EnemyKilled + 1;
             }
         }
     }

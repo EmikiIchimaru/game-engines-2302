@@ -1,18 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
+using UnityEngine.SceneManagement;
 
 public class Health : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void OnTriggerEnter(Collider other)
+    public TMP_Text HealthText;
+    public GameObject player;
+    private CharacterStats stats;
+
+    public void Start()
     {
-        if (other.CompareTag("Player"))
-        {
-            Destroy(this.gameObject);
-
-        }
+        stats = player.GetComponent<CharacterStats>();
     }
-
-
+    public void Update()
+    {
+        HealthText.text = "Health: " + stats.currentHealth;
+    }
 }

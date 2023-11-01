@@ -8,13 +8,13 @@ public class Bullet : MonoBehaviour
     private float attackDamage = 10f;
     //private Vector3 spawnLoc;
     public Vector3 dir;
-    
+
     private VFXManager vfxm;
 
     public void OnEnable()
     {
         speed = 25f;
-       // dir = new Vector3 (1f,1f,1f);
+        // dir = new Vector3 (1f,1f,1f);
     }
 
     void Start()
@@ -49,7 +49,7 @@ public class Bullet : MonoBehaviour
                 Destroy(vfx, 2f);
             }
         }
-        if (other.CompareTag("Enemy") )
+        if (other.CompareTag("Enemy") || other.CompareTag("Boss"))
         {
             CharacterStats targetChar = other.gameObject.GetComponent<CharacterStats>();
             if (targetChar == null) { return; }

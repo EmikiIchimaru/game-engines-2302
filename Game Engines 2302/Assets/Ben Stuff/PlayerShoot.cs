@@ -13,7 +13,7 @@ public class PlayerShoot : MonoBehaviour
     [SerializeField] private AudioSource Shooting;
     [SerializeField] private AudioSource Reloading;
 
-    private int currentBullets;
+    public int currentBullets;
 
     private Transform weaponTransform;
     
@@ -51,7 +51,6 @@ public class PlayerShoot : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.R))
             {
-                Debug.Log("reload");
                 currentBullets = maxBullets;
                 Reloading.Play();
 

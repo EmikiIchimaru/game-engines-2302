@@ -25,7 +25,6 @@ public class VFXManager : MonoBehaviour
     {
         VFX vfx = Array.Find(vfxs, vfx => vfx.name == name);
         if (vfx == null) { return null; }
-        Debug.Log(vfx.name);
         return vfx.effect;
     }
 }

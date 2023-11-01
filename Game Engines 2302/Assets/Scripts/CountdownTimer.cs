@@ -26,7 +26,7 @@ public class CountdownTimer : MonoBehaviour
     void UpdateTimerDisplay()
     {
         int seconds = Mathf.CeilToInt(timeRemaining);
-        countdownText.text = "Time: " + seconds.ToString();
+        countdownText.text = seconds.ToString();
     }
 
     void GameOver()
