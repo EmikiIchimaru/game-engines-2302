@@ -12,13 +12,11 @@ public class UI : MonoBehaviour
     public GameObject player;
     public int typeofStats;
     private CharacterStats stats;
-    private Score Scorepoint;
 
 
     void Start()
     {
         stats = player.GetComponent<CharacterStats>();
-        Scorepoint = player.GetComponent<Score>();
     }
 
     private void Update()
@@ -48,12 +46,12 @@ public class UI : MonoBehaviour
 
         if (typeofStats == 3)
         {
-            Text.text = "   " + Scorepoint.ScorePoint;
+            Text.text = "   " + Score.Instance.ScorePoint.ToString();
         }
 
         if (typeofStats == 4)
         {
-            Text.text = "" + Scorepoint.Bullet + "/10";
+            Text.text = "" + Score.Instance.Bullet.ToString() + "/10";
         }
     }
 

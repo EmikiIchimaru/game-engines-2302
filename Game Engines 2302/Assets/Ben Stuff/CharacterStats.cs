@@ -1,31 +1,32 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CharacterStats : MonoBehaviour
 {
+    //public static CharacterStats Instance { get; private set; }
 
     [SerializeField] private AudioSource Dead;
     [SerializeField] public bool IFrames = false;
 
 
     public float maxHealth;
-    public float Score;
+   // public float Score;
     public float currentHealth;
     public int EnemyKilled;
     public float cooldowntimer;
     public float timer;
     private Score Scorepoint;
-    public GameObject player;
+   // public GameObject score;
+
 
 
     // Start is called before the first frame update
     void Start()
     {
         currentHealth = maxHealth;
-        Score = 0;
         EnemyKilled = 0;
-        Scorepoint = player.GetComponent<Score>();
     }
 
     // Update is called once per frame
@@ -41,7 +42,13 @@ public class CharacterStats : MonoBehaviour
         {
             cooldowntimer -= Time.deltaTime;
         }
-    }
+
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            BackToMain();
+            
+        }
+        }
 
     public void TakeDamage(float damage)
     {
@@ -61,8 +68,8 @@ public class CharacterStats : MonoBehaviour
             if (currentHealth <= 0f)
             {
                 Die();
-                Scorepoint.ScorePoint = 10 + Scorepoint.ScorePoint;
-                Scorepoint.EnemyKilled = Scorepoint.EnemyKilled + 1;
+                Score.Instance.ScorePoint = 10 + Score.Instance.ScorePoint;
+                Score.Instance.EnemyKilled = Score.Instance.EnemyKilled + 1;
                 
             }
         }
@@ -71,8 +78,8 @@ public class CharacterStats : MonoBehaviour
             if (currentHealth <= 0f)
             {
                 Die();
-                Scorepoint.ScorePoint = 10 + Scorepoint.ScorePoint;
-                Scorepoint.EnemyKilled = Scorepoint.EnemyKilled + 1;
+                Score.Instance.ScorePoint = 10 + Score.Instance.ScorePoint;
+                Score.Instance.EnemyKilled = Score.Instance.EnemyKilled + 1;
             }
         }
     }
@@ -98,5 +105,11 @@ public class CharacterStats : MonoBehaviour
         {
             IFrames = true;
         }
+    }
+
+    public void BackToMain()
+    {
+        SceneManager.LoadScene(0);
+        Cursor.lockState = CursorLockMode.None;
     }
 }

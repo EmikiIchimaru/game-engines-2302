@@ -4,22 +4,24 @@ using UnityEngine;
 
 public class Score : MonoBehaviour
 {
+    public static Score Instance { get; private set; }
     public float ScorePoint = 0f;
     public float EnemyKilled = 0f;
     public float Bullet = 0f;
-    public GameObject player;
-    public PlayerShoot Ammo;
-    public static float totalscore;
+ 
+    
 
-    void Start()
+    private void Awake()
     {
-        Ammo = player.GetComponent<PlayerShoot>();
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        Bullet = Ammo.currentBullets;
-        totalscore = ScorePoint;
-    }
 }

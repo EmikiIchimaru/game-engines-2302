@@ -934,7 +934,7 @@ GameObject:
   - component: {fileID: 2417196775720805975}
   - component: {fileID: 1464755556}
   - component: {fileID: 1464755557}
-  - component: {fileID: 1464755558}
+  - component: {fileID: 1464755546}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1093,7 +1093,13 @@ MonoBehaviour:
   EnemyKilled: 0
   cooldowntimer: 0
   timer: 0
-  player: {fileID: 2417196775720805986}
+  score: {fileID: 0}
+  PlayerMovement: {fileID: 2417196775720805997}
+  CameraController: {fileID: 2417196775720805995}
+  Pause: {fileID: 1464755546}
+  Reloading: {fileID: 2417196775720805992}
+  Shooting: {fileID: 2417196775720805975}
+  BGM: {fileID: 1464755556}
 --- !u!54 &2417196775720805993
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1494,7 +1500,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &1464755558
+--- !u!114 &1464755546
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1503,14 +1509,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2417196775720805986}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03aefec3d10c73241ae51da772a225f3, type: 3}
+  m_Script: {fileID: 11500000, guid: d586dd0edd02fa8409335d7f66fdeb49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ScorePoint: 0
-  EnemyKilled: 0
-  Bullet: 0
-  player: {fileID: 2417196775720805986}
-  Ammo: {fileID: 0}
+  Pausemenu: {fileID: 0}
+  ispaused: 0
 --- !u!1 &2497142519603787798
 GameObject:
   m_ObjectHideFlags: 0

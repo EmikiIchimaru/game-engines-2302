@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class PlayerShoot : MonoBehaviour
 {
@@ -16,7 +15,7 @@ public class PlayerShoot : MonoBehaviour
     public int currentBullets;
 
     private Transform weaponTransform;
-    
+
 
     void Awake()
     {
@@ -24,6 +23,7 @@ public class PlayerShoot : MonoBehaviour
         //camera = transform.Find("Camera");
         weaponTransform = transform.Find("Rifle");
         currentBullets = maxBullets;
+
     }
     void Start()
     {
@@ -34,6 +34,7 @@ public class PlayerShoot : MonoBehaviour
     {
 
 
+        Score.Instance.Bullet = currentBullets;
             if (Input.GetMouseButtonDown(0))
             {
                 if (weaponTransform == null) { return; }
@@ -55,11 +56,6 @@ public class PlayerShoot : MonoBehaviour
                 Reloading.Play();
 
             }
-            if (Input.GetKeyDown(KeyCode.M))
-            {
-            Cursor.lockState = CursorLockMode.None;
-            SceneManager.LoadScene(0);
-             }
 
 
 

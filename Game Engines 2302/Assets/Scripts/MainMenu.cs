@@ -19,6 +19,11 @@ public class MainMenu : MonoBehaviour
         Application.Quit();
     }
 
+    public void BackToMain()
+    {     
+        SceneManager.LoadScene(0); 
+    }
+
     IEnumerator LoadLevel(int levelIndex)
     {
         transition.SetTrigger("Start");
