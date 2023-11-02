@@ -21,6 +21,5 @@ public class Score : MonoBehaviour
     {
         Bullet = Ammo.currentBullets;
         totalscore = ScorePoint;
-        Debug.Log(totalscore);
     }
 }

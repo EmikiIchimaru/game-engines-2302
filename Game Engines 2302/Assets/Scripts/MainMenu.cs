@@ -5,15 +5,26 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    
+    public Animator transition;
+    public float transitionTime = 1f;
+
     // Start is called before the first frame update
     public void PlayGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex + 1));
+        
     }
     public void ExitGame()
     {
         Application.Quit();
     }
 
+    IEnumerator LoadLevel(int levelIndex)
+    {
+        transition.SetTrigger("Start");
+
+        yield return new WaitForSeconds(transitionTime);
+
+        SceneManager.LoadScene(levelIndex);
+    }
 }
