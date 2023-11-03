@@ -12,11 +12,13 @@ public class UI : MonoBehaviour
     public GameObject player;
     public int typeofStats;
     private CharacterStats stats;
+    private PlayerStats Pstats;
 
 
     void Start()
     {
         stats = player.GetComponent<CharacterStats>();
+        Pstats = player.GetComponent<PlayerStats>();
     }
 
     private void Update()
@@ -46,7 +48,7 @@ public class UI : MonoBehaviour
 
         if (typeofStats == 3)
         {
-            Text.text = "   " + Score.Instance.ScorePoint.ToString();
+            Text.text = "   " + Pstats.score.ToString();
         }
 
         if (typeofStats == 4)
