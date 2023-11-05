@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Pause : MonoBehaviour
 {
@@ -35,6 +36,7 @@ public class Pause : MonoBehaviour
         Time.timeScale = 0f;
         ispaused = true;
         Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
 
     }
 
@@ -45,6 +47,18 @@ public class Pause : MonoBehaviour
         ispaused = false;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+    }
+
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void BackToMain()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        SceneManager.LoadScene(0);
     }
 }
 

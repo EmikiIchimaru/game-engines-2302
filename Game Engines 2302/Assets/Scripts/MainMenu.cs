@@ -11,7 +11,7 @@ public class MainMenu : MonoBehaviour
     // Start is called before the first frame update
     public void PlayGame()
     {
-        StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex + 1));
+        StartCoroutine(LoadLevel(1));
         
     }
     public void ExitGame()
@@ -20,8 +20,8 @@ public class MainMenu : MonoBehaviour
     }
 
     public void BackToMain()
-    {     
-        SceneManager.LoadScene(0); 
+    {
+        StartCoroutine(LoadLevel(0));
     }
 
     IEnumerator LoadLevel(int levelIndex)

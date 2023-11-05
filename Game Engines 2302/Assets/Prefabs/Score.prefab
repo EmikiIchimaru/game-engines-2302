@@ -47,5 +47,3 @@ MonoBehaviour:
   ScorePoint: 0
   EnemyKilled: 0
   Bullet: 0
-  player: {fileID: 0}
-  Ammo: {fileID: 0}

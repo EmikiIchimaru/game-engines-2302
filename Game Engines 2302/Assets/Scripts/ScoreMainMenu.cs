@@ -11,6 +11,6 @@ public class ScoreMainMenu : MonoBehaviour
 
     void Update()
     {    
-        Text.text = "HIGH SCORE:" + Score.Instance.ScorePoint.ToString();
+        Text.text = "HIGH SCORE:" + Score.Instance.HighScorePoint.ToString();
     }
 }

@@ -16,9 +16,7 @@ public class CharacterStats : MonoBehaviour
     public float currentHealth;
     public float cooldowntimer;
     public float timer;
-    // public GameObject score;
     public GameObject player;
-    private PlayerStats Pstats;
 
 
 
@@ -26,7 +24,6 @@ public class CharacterStats : MonoBehaviour
     void Start()
     {
         currentHealth = maxHealth;
-        Pstats = player.GetComponent<PlayerStats>();
     }
 
     // Update is called once per frame
@@ -85,16 +82,13 @@ public class CharacterStats : MonoBehaviour
     {
         if (other.CompareTag("Health"))
         {
-            currentHealth = currentHealth + 20;
+            currentHealth = currentHealth + 50;
             Destroy(other.gameObject);
 
         }
     }
     private void Die()
     {
-        Pstats.score += 10f;
-        Pstats.enemyKilled += 1f;
-
         Destroy(gameObject, 0.1f);
         //put fx here
         Dead.Play();
