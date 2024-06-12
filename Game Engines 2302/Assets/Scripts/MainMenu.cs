@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    public Animator transition;
+    //public Animator transition;
     public float transitionTime = 1f;
 
     // Start is called before the first frame update
@@ -26,7 +26,7 @@ public class MainMenu : MonoBehaviour
 
     IEnumerator LoadLevel(int levelIndex)
     {
-        transition.SetTrigger("Start");
+        //transition.SetTrigger("Start");
 
         yield return new WaitForSeconds(transitionTime);
 
