@@ -28,7 +28,7 @@ public class CameraController : MonoBehaviour
         // Capture mouse input for camera rotation
         mouseX += Input.GetAxis("Mouse X") * rotationSpeed;
         mouseY -= Input.GetAxis("Mouse Y") * rotationSpeed;
-        mouseY = Mathf.Clamp(mouseY, 15f, 90f);  // Clamp vertical rotation to avoid flipping
+        mouseY = Mathf.Clamp(mouseY, 0f, 90f);  // Clamp vertical rotation to avoid flipping
 
         // Calculate camera position based on player position and camera distance/height
         Vector3 offset = Quaternion.Euler(mouseY, mouseX, 0f) * new Vector3(0, 0, - cameraDistance);

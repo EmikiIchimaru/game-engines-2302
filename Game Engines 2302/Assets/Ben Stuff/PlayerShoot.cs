@@ -11,6 +11,7 @@ public class PlayerShoot : MonoBehaviour
     [SerializeField] private int maxBullets;
     [SerializeField] private AudioSource Shooting;
     [SerializeField] private AudioSource Reloading;
+    [SerializeField] private AudioSource NoAmmo;
 
     public int currentBullets;
 
@@ -45,7 +46,7 @@ public class PlayerShoot : MonoBehaviour
                 }
                 else
                 {
-                    //play no bullet fx;
+                    NoAmmo.Play();
                 }
 
             }

@@ -13,7 +13,7 @@ public class Bullet : MonoBehaviour
 
     public void OnEnable()
     {
-        speed = 25f;
+        speed = 30f;
         // dir = new Vector3 (1f,1f,1f);
     }
 

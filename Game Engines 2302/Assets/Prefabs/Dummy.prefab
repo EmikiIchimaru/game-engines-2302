@@ -1905,7 +1905,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Dead: {fileID: 7121416534202228568}
+  IFrames: 0
   maxHealth: 100
+  currentHealth: 0
+  cooldowntimer: 0
+  timer: 0
+  player: {fileID: 0}
 --- !u!54 &2427907559095619536
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1938,9 +1943,9 @@ MonoBehaviour:
   Shooting: {fileID: 7121416534202228574}
   Reloading: {fileID: 7121416534202228569}
   maxBullets: 2
-  Flag: 0
   m_maxPos: {x: 0, y: 0, z: 0}
   player: {fileID: 0}
+  timer: 0
 --- !u!82 &7121416534202228574
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1953,7 +1958,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 36c087856ea4403478a1cee2e16e7f6a, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.6
   m_Pitch: 1
   Loop: 0
   Mute: 0

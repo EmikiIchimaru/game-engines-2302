@@ -49,7 +49,7 @@ public class ExampleClass : MonoBehaviour
                 distanceToObstacle = hit.distance;
                 m_maxPos = this.transform.position;
                 transform.LookAt(player.transform);
-                if (timer >= 1 && this.CompareTag("Enemy"))
+                if (timer >= 0.75 && this.CompareTag("Enemy"))
                 {
 
                     if (currentBullets == 0)
@@ -66,7 +66,7 @@ public class ExampleClass : MonoBehaviour
          
                     timer = 0;
                 }
-                if (timer >= 0.1 && this.CompareTag("Boss"))
+                if (timer >= 0.33 && this.CompareTag("Boss"))
                 {
                     BossShoot();
                     timer = 0;
@@ -78,23 +78,23 @@ public class ExampleClass : MonoBehaviour
 
     private void Shoot()
     {
-        Quaternion spawnRotation = transform.rotation;
+        Quaternion spawnRotation = transform.rotation * Quaternion.Euler(0f, Random.Range(-10f,0f), 0f);
         GameObject go = Instantiate(bulletPrefab, weaponTransform.position, spawnRotation);
         Bullet bullet = go.GetComponent<Bullet>();
-        bullet.dir = transform.forward;
+        bullet.dir = go.transform.forward; // + new Vector3 (0f,Random.Range(-10f,10f),0f);
         Shooting.Play();
         Destroy(go, 2f);
 
     }
     private void BossShoot()
     {
-        Quaternion spawnRotation = transform.rotation;
+        Quaternion spawnRotation = transform.rotation * Quaternion.Euler(0f, Random.Range(-10f,0f), 0f);
         GameObject go = Instantiate(bulletPrefab, weaponTransform.position, spawnRotation);
         GameObject go2 = Instantiate(bulletPrefab, weaponTransform2.position, spawnRotation);
         Bullet bullet = go.GetComponent<Bullet>();
         Bullet bullet2 = go2.GetComponent<Bullet>();
-        bullet.dir = transform.forward;
-        bullet2.dir = transform.forward;
+        bullet.dir = go.transform.forward; // + new Vector3 (0f,Random.Range(-10f,10f),0f);
+        bullet2.dir = go2.transform.forward; // + new Vector3 (0f,Random.Range(-10f,10f),0f);
         Shooting.Play();
         Destroy(go, 2f);
 
